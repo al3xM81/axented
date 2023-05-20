@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.center {
+    margin: auto;
+    width: 50%;
+    background-color:aliceblue;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+tbody td {
+    padding: 10px 0px;
+    text-align: center;
+}
+
+.blogger-pic {
+    width: 20%;
+    height: 20%;
+}

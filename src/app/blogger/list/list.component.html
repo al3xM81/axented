@@ -1,0 +1,31 @@
+<p>Aqui va la lista de bloggers favoritos!!</p>
+<!-- <table mat-table [dataSource]="dataSrc">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let blogger"> {{blogger.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let blogger"> {{blogger.name}} </td>
+    </ng-container>
+</table> -->
+
+<div class="center">
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Website</th>
+            <th>Picture</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let blogger of this.dataSrc;">
+                <td>{{ blogger.name }}</td>
+                <td>{{ blogger.website }}</td>
+                <td>
+                    <img src="{{ blogger.picture_url }}" class="blogger-pic"
+                    alt="{{ blogger.picture_url }}">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
