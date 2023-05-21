@@ -4,13 +4,18 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .center {
-    margin: auto;
-    width: 50%;
     background-color:aliceblue;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    margin: auto;
     padding: 20px;
+    position: relative;
+    width: 600px;
+    top: 10px
 }
 
 table {
+    padding: 10px;
     width: 100%;
 }
 
@@ -19,7 +24,66 @@ tbody td {
     text-align: center;
 }
 
+tbody tr:hover  {
+    background-color: #12d5fd;
+}
+
 .blogger-pic {
     width: 20%;
     height: 20%;
+}
+
+.search-section {
+    display: inline;
+    padding: 15px;
+    vertical-align: middle;
+}
+
+.search-section > * {
+    margin: 3px;
+}
+
+.search-bar {
+    width: 60%;
+}
+
+.form-input {
+    border-radius: 3px;
+    border-width: 0;
+    border: 1px solid lightsteelblue;
+    height: 25px;
+}
+
+.blogger-btn    {
+    border: 1px solid lightsteelblue;
+    border-radius: 3px;
+    padding: 6px 20px;
+    text-align: center;
+}
+
+.myForm {
+    display: grid;
+}
+
+.form-col   {
+    width: 50%;
+    border: 1px solid aquamarine;
+}
+
+.myForm div {
+    padding: 10px 0;
+    width: 200px;
+}
+
+.myForm input {
+    width: 300px;
+}
+
+label   {
+    font-size: smaller;
+}
+
+small   {
+    color: red;
+    font-size: 8pt;
 }
