@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 
 import { Blogger } from 'src/app/shared/blogger';
 import { bloggers } from 'src/app/shared/mock'
@@ -16,9 +17,18 @@ export class ListComponent {
 
   _searchTerm: string = '';
 
-  constructor(private router: Router) {
-    this.dataSrc = bloggers;
+  constructor(private router: Router, private storageService: StorageService) {
+    /* this.dataSrc = bloggers;
+    this.filteredSrc = this.dataSrc; */
+
+    this.getBloggers();
+  }
+
+  getBloggers() {
+    this.dataSrc = this.storageService.getAllBloggers();
     this.filteredSrc = this.dataSrc;
+    
+    var x = 1;
   }
 
   addBlogger()  {

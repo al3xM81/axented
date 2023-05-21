@@ -1,6 +1,6 @@
 <div class="center">
     <h3>Add a new blogger</h3>
-    <form #addForm='ngForm' class="myForm">
+    <form #addForm="ngForm" class="myForm">
         <div>
             <label for="bloggerName">Name</label><small>*</small>
             <input type="text" name="bloggerName" #bloggerName="ngModel" [(ngModel)]="name" 
@@ -13,7 +13,7 @@
         <div>
             <label for="bloggerWebsite">Website</label><small>*</small>
             <input type="url" name="bloggerWebsite" #bloggerWebsite="ngModel" [(ngModel)]="website" 
-                maxlength="50" pattern="[a-z]+(.com|.org|.io|.dev|.mx)+" placeholder="github.com" class="form-input" required>
+                size="50" pattern="[a-z]+(.com|.org|.io|.dev|.mx)+" placeholder="github.com" class="form-input" required>
             <span *ngIf="bloggerWebsite.invalid && (bloggerWebsite.dirty || bloggerWebsite.touched)">
                 <small *ngIf="bloggerWebsite.errors?.['required']">Blogger's website is required!</small>
                 <small *ngIf="bloggerWebsite.errors?.['pattern']">Blogger's website must be a valid url!</small>
@@ -22,7 +22,7 @@
         <div>
             <label for="bloggerPicture">Picture url</label><small>*</small>
             <input type="url" name="bloggerPicture" #bloggerPicture="ngModel" [(ngModel)]="picture_url" 
-                maxlength="30" pattern="https://.*" class="form-input" value="https://placekitten.com/200/300" required>
+                size="50" pattern="https://.*" class="form-input" value="https://placekitten.com/200/300" required>
             <span *ngIf="bloggerPicture.invalid && (bloggerPicture.dirty || bloggerPicture.touched)">
                 <small *ngIf="bloggerPicture.errors?.['required']">Blogger's picture url is required!</small>
                 <small *ngIf="bloggerPicture.errors?.['pattern']">Please enter a valid url!</small>

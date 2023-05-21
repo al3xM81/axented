@@ -23,5 +23,13 @@ export let bloggers = [
   picture_url: "https://placekitten.com/200/300",
   email: "contact@tonystark.io",
   friends: ["1", "2"]
-  }
+  },
+  {
+    id: "4",
+    name: "Sandra Giorgana",
+    website: "giorgana.mx",
+    picture_url: "https://placekitten.com/200/300",
+    email: "sandra@giorgana.mx",
+    friends: []
+  },
 ]

@@ -1,10 +1,12 @@
 <p>Aqui va la lista de bloggers favoritos!!</p>
-
+<datalist id="bloggerList">
+    <option *ngFor="let item of this.dataSrc" value="{{ item.name }}"></option>
+</datalist>
 <div class="center">
     <div class="search-section">
-        <input type="text" #searchBlogger [(ngModel)]="searchTerm" class="search-bar form-input">{{ searchBlogger.value }}
+        <input type="text" [(ngModel)]="searchTerm" class="search-bar form-input" list="bloggerList">
         <button value="Search" class="blogger-btn">Search</button>
-        <button value="Add new" class="blogger-btn" (click)="addBlogger()">Add new</button>{{ this.searchTerm }}
+        <button value="Add new" class="blogger-btn" (click)="addBlogger()">Add new</button>
     </div>
     <table>
         <thead>

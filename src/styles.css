@@ -17,6 +17,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 table {
     padding: 10px;
     width: 100%;
+    height: 100%;
 }
 
 tbody td {
@@ -29,8 +30,8 @@ tbody tr:hover  {
 }
 
 .blogger-pic {
-    width: 20%;
-    height: 20%;
+    width: 56px;
+    height: 84px;
 }
 
 .search-section {
