@@ -1,29 +1,35 @@
 # BloggerChallenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+This project show a favorite blogger list with a search option. This project uses localStorage to preserve data.
 
-## Development server
+If you start to write a name or website in search data an autocomplete is shown with name of blogger, search button will filter table below by name or website. If user clean search input then all bloggers will be displayed.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Install dependencies
 
-## Code scaffolding
+This project uses Font-Awesome to uses icons in some actions. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Install it this way:
+
+`npm install @fortawesome/angular-fontawesome@0.12`
+
+Note: Version 0.12 is compatible with Angular 15 which is used by this project
+
+Install icons like this:
+
+`npm install @fortawesome/free-solid-svg-icons`
+
+## Run in development mode
+
+This project runs in default 'production' environment, in order to run in development mode you must run:
+
+`ng serve --configuration=development`
+
+## Run testing
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+Otherwise run `ng serve` to run project in a localhost
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-The project uses local storage to preserve data

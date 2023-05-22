@@ -2,24 +2,27 @@
     <h3>Blogger details</h3>
     <div class="row">
         <div class="column">
-            <img [src]="blogger.picture_url" [alt]="blogger.picture_url">
+            <img [src]="blogger_picture" [alt]="blogger_picture" class="picture">
         </div>
         <div class="column">
             <div>
                 <label>Name:</label>
-                <p>{{ blogger.name }}</p>
+                <p>{{ this.name }}</p>
             </div>
             <div>
                 <label>Website:</label>
-                <p>{{ blogger.website }}</p>
+                <p>{{ this.website }}</p>
             </div>
             <div>
-                <label>Fiends:</label>
+                <label>List of friends:</label>
                 <p>{{ this.friends }}</p>
             </div>
             <div>
                 <label>Email:</label>
-                <p>{{ blogger.email }}</p>
+                <p>{{ this.email }}</p>
+            </div>
+            <div>
+                <button type="button" class="blogger-btn" (click)="return()">Return to list</button>
             </div>
         </div>
     </div>

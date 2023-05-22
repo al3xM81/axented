@@ -44,7 +44,7 @@
             </select>
         </div>
         <div class="btn-bar">
-            <button type="button" class="blogger-btn" (click)="save()" [disabled]="addForm.invalid">Save</button>
+            <button type="button" class="blogger-btn" (click)="save()" [disabled]="addForm.invalid || this.blockSaving">Save</button>
             <button type="button" class="blogger-btn" (click)="cancel()">Cancel</button>
         </div>
     </form>

@@ -17,10 +17,12 @@ export class AddComponent {
   website: string = '';
   picture_url: string = '';
   email: string = '';
+
   friendList: string[] = [];
   allBloggers:any = [];
 
   action: string = 'add';
+  blockSaving: boolean = false;
 
   // regex for valid email
   emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -28,34 +30,44 @@ export class AddComponent {
   constructor(private storageService: StorageService, 
               private router: Router, 
               private activatedRouter: ActivatedRoute) {
-    let actionRoute = this.activatedRouter.snapshot.url[1].path;
+    if (this.activatedRouter.snapshot.url.length > 0)  {
+      let actionRoute = this.activatedRouter.snapshot.url[1].path;
 
-    switch(actionRoute)  {
-      case "add": default: 
-                  this.action = "add";
-                  break;
-      case "update": this.action = "edit";
-                  this.id = activatedRouter.snapshot.paramMap.get('id') as string;
-                  this.getAllBloggers();
-                  this.getBlogger(this.id);
-                  break;
+      switch(actionRoute)  {
+        case "add": default: 
+                    this.action = "add";
+                    break;
+        case "update": this.action = "edit";
+                    this.id = activatedRouter.snapshot.paramMap.get('id') as string;
+                    this.getAllBloggers();
+                    this.getBlogger(this.id);
+                    break;
+      }
+    }
+    else {
+      this.router.navigate(['/blogger/favorite']);
     }
   }
 
+  // Save button action
   save()  {
+    this.blockSaving = true;
+
     if (this.action == "add")
       this.createNew();
     else
       this.updateBlogger();
     
-    // Return to main page after two seconds
-    setTimeout(() => this.router.navigate(['/blogger/favorites']), 2000);
+    // Return to main page after one second
+    setTimeout(() => this.router.navigate(['/blogger/favorites']), 1000);
   }
 
+  // Return to main page
   cancel()  {
     this.router.navigate(['/blogger/favorites']);
   }
 
+  // When update action get blogger data
   getBlogger(id: string)  {
     this.currentBlogger = this.storageService.getBlogger(id);
 
@@ -67,30 +79,32 @@ export class AddComponent {
       this.email = this.currentBlogger.email as string;
       this.friendList = this.currentBlogger.friends;
     }
+    else {
+      this.router.navigate(['/blogger/add']);
+    }
   }
 
+  // Get All bloggers to fill select friends component
   getAllBloggers()  {
     this.allBloggers = this.storageService.getAllBloggers();
+    this.allBloggers = this.allBloggers.filter((x: { id: string; }) => x.id != this.id);
   }
 
+  // Create new blogger and add it to storage
   createNew()  {
-    console.log("saving..");
     let blogger = new Blogger(this.name, this.website, this.picture_url, this.email);
 
     this.storageService.addBlogger(blogger);
   }
 
+  // Update existing blogger
   updateBlogger()  {
-    console.log("Update data");
-
     this.currentBlogger.id = this.id;
     this.currentBlogger.name = this.name;
     this.currentBlogger.website = this.website;
     this.currentBlogger.picture_url = this.picture_url;
     this.currentBlogger.email = this.email;
     this.currentBlogger.friends = this.friendList;
-
-    console.log(this.currentBlogger);
 
     this.storageService.addBlogger(this.currentBlogger, this.id);
   }
