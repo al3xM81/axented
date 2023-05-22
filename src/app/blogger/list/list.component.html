@@ -13,6 +13,7 @@
             <th>Name</th>
             <th>Website</th>
             <th>Picture</th>
+            <th>Action</th>
         </thead>
         <tbody>
             <tr *ngFor="let blogger of this.filteredSrc;">
@@ -21,6 +22,14 @@
                 <td>
                     <img src="{{ blogger.picture_url }}" class="blogger-pic"
                     alt="{{ blogger.picture_url }}">
+                </td>
+                <td>
+                    <a [routerLink]="['/blogger/update/', blogger.id]" title="Update blogger">
+                        <fa-icon [icon]="icon_edit"></fa-icon>
+                    </a>
+                    <a [routerLink]="['/blogger/details/', blogger.id]" title="View blogger details">
+                        <fa-icon [icon]="icon_view"></fa-icon>
+                    </a>
                 </td>
             </tr>
         </tbody>

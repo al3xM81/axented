@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 
 import { Blogger } from 'src/app/shared/blogger';
-import { bloggers } from 'src/app/shared/mock'
+import { bloggers } from 'src/app/shared/mock';
+
+import { faPencil, faEye } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list',
@@ -15,6 +17,9 @@ export class ListComponent {
   dataSrc!: Blogger[];
   filteredSrc!: Blogger[];
 
+  icon_edit: any;
+  icon_view: any;
+
   _searchTerm: string = '';
 
   constructor(private router: Router, private storageService: StorageService) {
@@ -22,12 +27,16 @@ export class ListComponent {
     this.filteredSrc = this.dataSrc; */
 
     this.getBloggers();
+
+    // Set icons
+    this.icon_edit = faPencil;
+    this.icon_view = faEye;
   }
 
   getBloggers() {
     this.dataSrc = this.storageService.getAllBloggers();
     this.filteredSrc = this.dataSrc;
-    
+
     var x = 1;
   }
 
@@ -48,6 +57,4 @@ export class ListComponent {
     return this.dataSrc.filter(x => x.name?.toLowerCase().indexOf(val.toLowerCase()) !== -1
       || x.website?.toLowerCase().indexOf(val.toLowerCase()) !== -1);
   }
-
-
 }

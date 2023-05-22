@@ -29,6 +29,11 @@ tbody tr:hover  {
     background-color: #12d5fd;
 }
 
+img {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
 .blogger-pic {
     width: 56px;
     height: 84px;
@@ -55,6 +60,12 @@ tbody tr:hover  {
     height: 25px;
 }
 
+select {
+    border-radius: 3px;
+    border-width: 0;
+    border: 1px solid lightsteelblue;
+}
+
 .blogger-btn    {
     border: 1px solid lightsteelblue;
     border-radius: 3px;
@@ -76,7 +87,7 @@ tbody tr:hover  {
     width: 200px;
 }
 
-.myForm input {
+.myForm input, select {
     width: 300px;
 }
 
@@ -87,4 +98,9 @@ label   {
 small   {
     color: red;
     font-size: 8pt;
+}
+
+.btn-bar > button {
+    display: inline;
+    margin-right: 3px;
 }

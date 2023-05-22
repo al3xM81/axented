@@ -31,11 +31,24 @@ export class StorageService {
   }
 
   public getBlogger(key: string) {
-    return localStorage.getItem(key);
+    let item = localStorage.getItem(key);
+
+    if (item) {
+      let blogger = JSON.parse(item);
+
+      if (blogger)  {
+        let friendNames = this.getFriendList(blogger.friends);
+        blogger.friendNames = friendNames;
+
+        return blogger;
+      }
+    }
+
+    return null;
   }
 
   public getAllBloggers() {
-    let storageData = [];
+    let storageData: any = [];
 
     console.log("local storage");
 
@@ -45,14 +58,35 @@ export class StorageService {
 
         if (key)  {
           let data = localStorage.getItem(key);
+          let blogger = JSON.parse(data as string) as Blogger;
 
-          storageData.push(JSON.parse(data as string));
-        }        
+          if (blogger)  {
+            let friendNames = this.getFriendList(blogger.friends);
+            blogger.friendNames = friendNames;
+
+            storageData.push(blogger);
+          }
+        }
       }
     }
 
-    console.log(storageData);
+    //console.log(storageData);
     return storageData;
+  }
+
+  private getFriendList(list: string[])  {
+    let friends: string[] = [];
+
+    list.forEach(
+      f => {
+        let friend = this.getBlogger(f);
+
+        if (friend)
+          friends.push(friend.name);
+      }
+    );
+
+    return friends;
   }
 
   private getMaxStorageKey() {

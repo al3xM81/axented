@@ -1,8 +1,26 @@
-<p>details works!</p>
 <div class="center">
     <h3>Blogger details</h3>
-    <div>
-        <label>Name:</label>
-        <p>Alex</p>
+    <div class="row">
+        <div class="column">
+            <img [src]="blogger.picture_url" [alt]="blogger.picture_url">
+        </div>
+        <div class="column">
+            <div>
+                <label>Name:</label>
+                <p>{{ blogger.name }}</p>
+            </div>
+            <div>
+                <label>Website:</label>
+                <p>{{ blogger.website }}</p>
+            </div>
+            <div>
+                <label>Fiends:</label>
+                <p>{{ this.friends }}</p>
+            </div>
+            <div>
+                <label>Email:</label>
+                <p>{{ blogger.email }}</p>
+            </div>
+        </div>
     </div>
 </div>

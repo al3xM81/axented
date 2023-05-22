@@ -1,5 +1,5 @@
 <div class="center">
-    <h3>Add a new blogger</h3>
+    <h3>{{ (this.action == "add") ? "Add a new" : "Update" }} blogger</h3>
     <form #addForm="ngForm" class="myForm">
         <div>
             <label for="bloggerName">Name</label><small>*</small>
@@ -37,8 +37,15 @@
                 <small *ngIf="bloggerEmail.errors?.['pattern']">Please enter a valid email!</small>
             </span>
         </div>
-        <div>
+        <div *ngIf="this.action == 'edit'">
+            <label for="friends">Set friends</label>
+            <select name="friends" #friendsBlogger="ngModel" [(ngModel)]="friendList" multiple>
+                <option *ngFor="let blogger of this.allBloggers" [value]="blogger.id">{{ blogger.name }}</option>
+            </select>
+        </div>
+        <div class="btn-bar">
             <button type="button" class="blogger-btn" (click)="save()" [disabled]="addForm.invalid">Save</button>
+            <button type="button" class="blogger-btn" (click)="cancel()">Cancel</button>
         </div>
     </form>
 </div>
