@@ -18,6 +18,10 @@ Install icons like this:
 
 `npm install @fortawesome/free-solid-svg-icons`
 
+After that, please run this command to install all other dependencies
+
+`npm install`
+
 ## Run in development mode
 
 This project runs in default 'production' environment, in order to run in development mode you must run:
